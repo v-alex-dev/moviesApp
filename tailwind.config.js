@@ -11,7 +11,8 @@ export default {
         'Red':'#FF8F71',
         'gray':'#BCBCBC',
         'white':'#FFFFFF',
-        'gray-light':'#DADADA'
+        'gray-light':'#DADADA',
+        'linear': 'linear-gradient(90deg, rgba(200,200,200,1) 51%, rgba(255,255,255,1) 100%)',
       },
     },
   },

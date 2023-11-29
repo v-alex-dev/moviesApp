@@ -4,6 +4,7 @@
 
 @layer components{
     .glass {
-        @apply bg-gray-light bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30;
+        @apply bg-gray-light bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20;
     }
+
 }

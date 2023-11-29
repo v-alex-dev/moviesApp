@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {options} from "../api/get-options.js";
+import BtnPlay from "./btn-play.jsx";
 
 const NowPlaying = () => {
     const [movie, setMovie] = useState({});
@@ -30,7 +31,9 @@ const NowPlaying = () => {
         <>
             <div className={"text-white text-center bg-cover bg-center rounded-2xl h-52 relative flex items-end"} style={{ backgroundImage: `url('https://image.tmdb.org/t/p/w500/${movie.backdrop_path}')`}}>
                 <div className={"glass flex w-2/3 h-1/4 rounded-full items-center px-4 mb-4 ml-2 justify-between"} >
-                    <div className={"ml-0.5 min-w-1/5"}><img className={"min-w-fit"} src={'../../public/play.svg'} alt={movie.original_title}/></div>
+                    <div className={"ml-0.5 min-w-1/5 "}>
+                        <BtnPlay linkSvg={"w-9 rounded-full bg-Red p-3"} link={"#"} isGradiant={true} linkClass={""}/>
+                    </div>
                     <div className={' flex flex-col mr-0.5 '}>
                         <blockquote className={"text-gray text-xs "}>Movie Spotlight</blockquote>
                         <h2 className={"text-xs overflow-hidden line-clamp-1 max-w-2/3"}>{movie.original_title}</h2>

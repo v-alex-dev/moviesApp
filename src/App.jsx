@@ -5,7 +5,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
 import Error404 from "./errors/404.jsx";
 import Home from "./pages/home.jsx";
-import Discover from "./pages/discover.jsx";
+import Details from "./pages/details.jsx";
 import Layout from "./layouts/layout.jsx";
 
 const router = createBrowserRouter([
@@ -23,8 +23,8 @@ const router = createBrowserRouter([
         element: <Home/>,
       },
       {
-        path: 'discover',
-        element: <Discover/>
+        path: 'discover/:id',
+        element: <Details />
       }
     ]
   }
