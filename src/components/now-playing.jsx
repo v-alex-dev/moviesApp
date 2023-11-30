@@ -1,31 +1,18 @@
-import {useEffect, useState} from "react";
-import {options} from "../api/get-options.js";
-import BtnPlay from "./btn-play.jsx";
 
-const NowPlaying = () => {
-    const [movie, setMovie] = useState({});
+import BtnPlay from "./btn-play.jsx";
+import PropTypes from "prop-types";
+
+
+const NowPlaying = ({nowMovies}) => {
+
     const getRandomIndex = () => {
         return Math.floor(Math.random() * 20);
     };
 
     const movieIndex = getRandomIndex();
 
-    useEffect(() => {
+    const movie = nowMovies[movieIndex]
 
-        const fetchMovieData = async () => {
-            try {
-                const response = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options);
-                const data = await response.json();
-                setMovie(data.results[movieIndex]);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        if (movieIndex !== undefined) {
-            fetchMovieData();
-        }
-    }, []);
 
     return (
         <>
@@ -44,4 +31,7 @@ const NowPlaying = () => {
     )
 }
 
+NowPlaying.Proptype = {
+    nowMovies: PropTypes.object.isRequired
+}
 export default NowPlaying;

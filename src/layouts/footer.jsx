@@ -13,10 +13,10 @@ const Footer = () => {
 
                     </NavLink></li>
                     <li><NavLink to={"/browser"}>
-                        <img src="../../public/search.svg" alt="search"/>
+                        <img src="/search.svg" alt="search"/>
                     </NavLink></li>
                     <li><NavLink to={"/account"}>
-                        <img src="../../public/Group%20253.svg" alt=""/>
+                        <img src="/Group%20253.svg" alt=""/>
                     </NavLink></li>
                 </ul>
             </nav>
