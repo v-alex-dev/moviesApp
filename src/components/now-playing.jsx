@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 
 const NowPlaying = ({nowMovies}) => {
-
     const getRandomIndex = () => {
         return Math.floor(Math.random() * 20);
     };
