@@ -23,12 +23,9 @@ const router = createBrowserRouter([
                 index: true,
                 element: <Home/>,
                 loader: () => {
-
-
                     const nowMovies =  fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
                         .then(res =>res.json())
                         .then(res=>res.results);
-
                     const movies = fetch('https://api.themoviedb.org/3/discover/movie?include_video=false&language=en-US&page=1', options)
                         .then(res => res.json())
                         .then(res => res.results);

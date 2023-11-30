@@ -1,5 +1,4 @@
-import {Suspense, useEffect, useState} from "react";
-import {options} from "../api/get-options.js";
+import {Suspense, useState} from "react";
 import Header from "../layouts/header.jsx";
 import Footer from "../layouts/footer.jsx";
 import NowPlaying from "../components/now-playing.jsx";
@@ -7,9 +6,22 @@ import {Await, Link, useLoaderData,} from "react-router-dom";
 import Loader from "./loader.jsx";
 
 const Home = () => {
+
+    const [isLoading, setIsLoadig] = useState(true);
+
     const {movies} = useLoaderData();
     const {nowMovies} = useLoaderData();
 
+    const  waitLoading = () => {
+        if (movies && nowMovies){
+            return  setIsLoadig(false)
+        }
+        else{
+            return (
+                <Loader/>
+            )
+        }
+    }
     return (
         <>
         <Suspense fallback={<Loader/>}>
