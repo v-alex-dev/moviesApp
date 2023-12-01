@@ -7,6 +7,7 @@ import Details from "./pages/details.jsx";
 import Layout from "./layouts/layout.jsx";
 
 import {options} from "./api/get-options.js";
+import Discover from "./pages/discover.jsx";
 
 
 const router = createBrowserRouter([
@@ -22,11 +23,11 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home/>,
-                loader: () => {
-                    const nowMovies =  fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
+                loader: async() => {
+                    const nowMovies =  await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
                         .then(res =>res.json())
                         .then(res=>res.results);
-                    const movies = fetch('https://api.themoviedb.org/3/discover/movie?include_video=false&language=en-US&page=1', options)
+                    const movies = await fetch('https://api.themoviedb.org/3/discover/movie?include_video=false&language=en-US&page=1', options)
                         .then(res => res.json())
                         .then(res => res.results);
                     return ({
@@ -36,7 +37,11 @@ const router = createBrowserRouter([
                 }
             },
             {
-                path: 'discover/:id',
+                path:'discover',
+                element: <Discover/>
+            },
+            {
+                path: 'details/:id',
                 element: <Details/>
             }
         ]

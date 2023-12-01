@@ -1,12 +1,16 @@
 import {useEffect, useState} from "react";
 import {options} from "../api/get-options.js";
 import {Link, useParams} from "react-router-dom";
+
+
 import BtnPlay from "../components/btn-play.jsx";
+import Badge from "../components/badge.jsx";
+import DetailsHeader from "../components/details-header.jsx";
+import DetailsTitle from "../components/details-title.jsx";
 
 const Details = () => {
     const {id} = useParams();
     const [movie, setMovie] = useState({})
-
     useEffect(() => {
         const fetchMovieData = async () => {
             try {
@@ -20,24 +24,48 @@ const Details = () => {
 
         fetchMovieData();
 
-    }, [id]);
+    }, []);
+
 
     console.log(movie)
+
+    const date = new Date(movie.release_date)
+
+
+    const optionsDate = {
+        month: 'long',
+        year: 'numeric',
+        day: 'numeric',
+    };
+
+    const dateRelease = date.toLocaleDateString("en-US", optionsDate)
+    const genres = movie.genres
+
+    console.log(genres)
+
     return (
-
-        <header className={"h-96 w-full bg-cover bg-center flex justify-center items-center relative"}
-                style={{backgroundImage: `url('https://image.tmdb.org/t/p/w500/${movie.backdrop_path}')`}}>
-            <BtnPlay link={"/"} isGradiant={false} linkClass={"glass rounded-full p-5 w-16"} linkSvg={"text-Red"}/>
-            <Link to={"/"}>
-                <svg className={"w-8 absolute left-2 top-12"} xmlns="http://www.w3.org/2000/svg" id="Bold"
-                     viewBox="0 0 24 24" fill="white">
-                    <path
-                        d="M17.921,1.505a1.5,1.5,0,0,1-.44,1.06L9.809,10.237a2.5,2.5,0,0,0,0,3.536l7.662,7.662a1.5,1.5,0,0,1-2.121,2.121L7.688,15.9a5.506,5.506,0,0,1,0-7.779L15.36.444a1.5,1.5,0,0,1,2.561,1.061Z"/>
-                </svg>
-            </Link>
-        </header>
-
+        <>
+            <main>
+                <DetailsHeader movie={movie}/>
+                <DetailsTitle movie={movie}/>
+                <section id={"information"} className={"text-gray border-b border-gray-light mx-10 flex justify-between"}>
+                    <div>
+                        <h2 className={"text-2xl text-white"}>Release date</h2>
+                        <p>{dateRelease}</p>
+                    </div>
+                    {genres && genres.length > 0 && (
+                    <div id={"genre"}>
+                        <h3 className={"text-2xl text-white"}>Genre</h3>
+                        <div className={"flex justify-around overflow-scroll w-2/3"}>
+                            {genres.map((genre) => (
+                                <Badge content={genre.name} isRoundedFull={true} key={genre.id}/>
+                            ))}
+                        </div>
+                    </div>
+                    )}
+                </section>
+            </main>
+        </>
     )
 }
-
 export default Details;

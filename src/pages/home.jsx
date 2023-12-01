@@ -23,10 +23,10 @@ const Home = () => {
                         )}
                     </Await>
                 </Header>
-                <main className={"mx-3 max-h"}>
-                    <section className={"text-left text-white mt-12"}>
-                        <h2 className={"ml-4 text-2xl"}>Trending</h2>
-                        <div className={"flex snap-proximity  overflow-x-scroll"}>
+                <main className={"mx-3 mt-2 h-2/3"}>
+                    <section className={"text-left text-white h-full"}>
+                        <h2 className={"ml-4 my-6 text-2xl"}>Trending</h2>
+                        <div className={"flex h-full overflow-x-scroll mt-2"}>
                             <Await resolve={movies}>
                                 {(movies) => (
                                     <ListMovies movies={movies}/>

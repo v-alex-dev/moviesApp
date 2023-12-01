@@ -27,7 +27,7 @@ const BtnPlay = ({linkClass, linkSvg, link, isGradiant}) => {
     }
 
     return (
-        <Link className={linkClass} to={link}>
+        <Link className={linkClass} to={link} target={"_blank"}>
             <svg className={linkSvg} xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24">
                 {gradiant()}
             </svg>

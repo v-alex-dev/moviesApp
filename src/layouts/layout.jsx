@@ -1,12 +1,10 @@
-import {Outlet, useNavigate, useNavigation} from "react-router-dom";
-import Loader from "../pages/loader.jsx";
+import {Outlet} from "react-router-dom";
 
 const Layout = () => {
-    const {state} = useNavigation();
     return (
         <>
-            {state === 'loading' && <Loader/>}
             <Outlet/>
+
         </>
     )
 }
